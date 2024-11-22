@@ -6,14 +6,16 @@
 /*   By: dvo <dvo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 21:49:30 by dvo               #+#    #+#             */
-/*   Updated: 2024/11/19 16:34:44 by dvo              ###   ########.fr       */
+/*   Updated: 2024/11/22 16:01:17 by dvo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
 #include <list>
+#include <stack>
 #include <deque>
+#include <queue>
 
 #define TRY(expression) \
 	try \
@@ -50,5 +52,5 @@ int main (void)
 
 	std::deque<int> deq;
 	add(deq, pushback<std::deque<int> >);
-	TRY(::easyfind(deq, 1));
+	TRY(::easyfind(deq, 8));
 }

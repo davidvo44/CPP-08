@@ -6,7 +6,7 @@
 /*   By: dvo <dvo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:37:14 by dvo               #+#    #+#             */
-/*   Updated: 2024/11/19 17:38:06 by dvo              ###   ########.fr       */
+/*   Updated: 2024/11/20 19:41:24 by dvo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	Span& operator=(Span const & src);
 
 	void addNumber(int nb);
+	void add_many(int size, int first, ...);
 	int	shortestSpan();
 	int	longestSpan();
 			//Exception Class
@@ -38,7 +39,6 @@ public:
 	};
 private:
 	std::set<int> 	_array;
-	int		_shortest;
 };
 
 #endif

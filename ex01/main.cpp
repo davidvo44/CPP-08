@@ -6,7 +6,7 @@
 /*   By: dvo <dvo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:38:25 by dvo               #+#    #+#             */
-/*   Updated: 2024/11/19 19:47:24 by dvo              ###   ########.fr       */
+/*   Updated: 2024/11/22 19:11:02 by dvo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 int main (void)
 {
 	Span test;
+
 	Span oui;
 	oui = test;
 	TRY(std::cout << test.shortestSpan() << std::endl);
@@ -33,9 +34,10 @@ int main (void)
 	TRY(std::cout << test.shortestSpan() << std::endl);
 	test.addNumber(2);
 	std::cout << test.shortestSpan() << std::endl;
-	test.addNumber(-1);
+	test.addNumber(1);
 	oui.addNumber(-2);
-	TRY(test.addNumber(2));
+	TRY(test.addNumber(3));
+	test.add_many(4, 0, 4, 10, 8);
 	std::cout << test.shortestSpan() << std::endl;
 	std::cout << test.longestSpan() << std::endl;
 	TRY(std::cout << oui.longestSpan() << std::endl);

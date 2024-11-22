@@ -6,7 +6,7 @@
 /*   By: dvo <dvo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:44:33 by dvo               #+#    #+#             */
-/*   Updated: 2024/11/19 20:51:39 by dvo              ###   ########.fr       */
+/*   Updated: 2024/11/20 18:08:50 by dvo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
 	std::cout << *it << std::endl;
 
 
-	for (MutantStack<int>::r_iterator  it = test.rbegin(); it != test.rend(); ++it)
+	for (MutantStack<int>::reverse_iterator  it = test.rbegin(); it != test.rend(); ++it)
     	std::cout << *it << " ";
 	std::cout << std::endl;
 }

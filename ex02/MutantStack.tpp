@@ -6,7 +6,7 @@
 /*   By: dvo <dvo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:41:55 by dvo               #+#    #+#             */
-/*   Updated: 2024/11/19 20:48:10 by dvo              ###   ########.fr       */
+/*   Updated: 2024/11/20 18:08:41 by dvo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ typename MutantStack<T>::iterator MutantStack<T>::end()
 }
 
 template <typename T>
-typename MutantStack<T>::r_iterator MutantStack<T>::rbegin()
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
 {
 	return (this->c.rbegin());
 }
 
 template <typename T>
-typename MutantStack<T>::r_iterator MutantStack<T>::rend()
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
 {
 	return (this->c.rend());
 }

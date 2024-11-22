@@ -6,25 +6,24 @@
 /*   By: dvo <dvo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:46:06 by dvo               #+#    #+#             */
-/*   Updated: 2024/11/19 18:06:18 by dvo              ###   ########.fr       */
+/*   Updated: 2024/11/20 19:56:13 by dvo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
+#include <cstdarg>
 #include <climits>
 
 Span::Span()
 {
 	_array.clear();
-	_shortest = INT_MAX;
 }
 
 Span::Span(Span const &src)
 {
 	_array.clear();
 	_array = src._array;
-	_shortest = INT_MAX;
 }
 
 Span::~Span(){}
@@ -41,26 +40,36 @@ void Span::addNumber(int nb)
 		_array.insert(nb);
 	else
 		throw NumberAlreadyExist();
-	std::set<int>::iterator it;
-	std::set<int>::iterator itmax;
-	it = _array.find(nb);
-	itmax = it;
-	std::advance(itmax, 1);
-	if (itmax != _array.end())
-		if (*itmax - *it < _shortest)
-			_shortest = *itmax - *it;
-	itmax = it;
-	std::advance(itmax, -1);
-	if (it != _array.begin())
-		if (*it - *itmax < _shortest)
-			_shortest = *it - *itmax;
+}
+
+void Span::add_many(int size, int first, ...)
+{
+	std::va_list args;
+	va_start(args, first);
+	int value = first;
+	for (int i = 0; i < size; i++)
+   {
+		_array.insert(value);
+		value = va_arg(args, int);
+	}
+	va_end(args);
 }
 
 int Span::shortestSpan()
 {
 	if (_array.size() < 2)
 		throw SpanTooShort();
-	return _shortest;
+	std::set<int>::iterator it = _array.begin();
+	std::set<int>::iterator itmax = it;
+	int shortest = INT_MAX;
+	std::advance(itmax, 1);
+	for (; itmax != _array.end(); std::advance(itmax, 1))
+	{
+		if (*itmax - *it < shortest)
+			shortest = *itmax - *it;
+		std::advance(it, 1);
+	}
+	return (shortest);
 }
 
 int Span::longestSpan()
@@ -69,9 +78,6 @@ int Span::longestSpan()
 		throw SpanTooShort();
 	return (*(--_array.end()) - *_array.begin());
 }
-//1 3 -1 10 11
-//1
-//10
 
 const char* Span::NumberAlreadyExist::what() const throw()
 {
